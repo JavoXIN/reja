@@ -1,7 +1,19 @@
 console.log("Web serverni boshlash");
 const express = require("express");
+const res = require("express/lib/response");
 const app = express();
 const http = require("http");
+const fs = require("fs");
+
+
+let user;
+fs.readFile("database/user.json", "utf-8", (err, data) => {
+    if (err) {
+        console.log("Error", err);
+    } else { 
+        user = JSON.parse(data);
+    }
+});
 
 
 // 1 - Expressdan kirib kelayotgan malumotlarga bogliq kodlar kirib keladi
@@ -18,13 +30,29 @@ app.set("views", "views"); // views folderni ochaman, views folderini ishlatish 
 app.set("view engine", "ejs"); // EJS ni ishlatish uchun
 
 // 4 - rooter larga moljallangan
-app.get("/hello", function (req, res) {
-    res.end(`<h1 style="background: red">Hello world by Javohir!!!!!</h1>`);
+
+app.post("/create-item", (req, res) => {
+    //console.log(req.body);
+    //console.log(req);
+    //res.json({ test: "success" });
+
 });
 
-app.get("/gift", function (req, res) {
-    res.end(`<h1 style="background: blue">welcome to the world</h1>`);
+app.get('/author', (req, res) => {
+    res.render("author", { user: user });
 });
+
+
+
+
+
+
+
+app.get("/", function (req, res) {
+    res.render("harid");
+}); 
+
+
 
 const server = http.createServer(app);
 let PORT = 3000;
