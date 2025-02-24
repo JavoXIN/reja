@@ -109,7 +109,7 @@ async function maslahatBering(a) {
 
 
 
-
+// //then/catch method
 async function run() {
     let javob = await maslahatBering(20);
     console.log(javob);
@@ -119,3 +119,7 @@ async function run() {
     console.log(javob);
 }
 run();
+
+
+//=============================================================
+
