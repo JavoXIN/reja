@@ -123,6 +123,62 @@ run();
 
 //=============================================================
 
+
+console.log("Jack Ma maslahatlar");
+const list2 = [
+    "yahshi talaba boling", // 0-20
+    "toguri boshliq tanlang va koproq hato qiling", // 20-30
+    "uzingizga ishlashingizni boshlang", // 30-40
+    "siz kuchli bolgan narsalarni qiling", // 40-50
+    "yoshlarga investitsiya qiling", // 50-60
+    "endi dam along, foydasi yoq endi", // 60
+];
+
+
+async function maslahatBering2(a) {
+    if (typeof a !== "number") throw new Error ("insert a number");
+    else if (a <= 20) return list2[0];
+    else if (a > 20 && a <= 30) return list2[1];
+    else if (a > 30 && a <= 40) return list2[2];
+    else if (a > 40 && a <= 50) return list2[3];
+    else if (a > 50 && a <= 60) return list2[4];
+    
+
+    else { //second
+        return new Promise((resolve, reject) => { //reolve betda return, reject betda throw
+            setTimeout( () => {
+                resolve(list2[5]);
+            }, 5000);
+        });
+    }
+  }
+
+
+async function run() {
+    let javob2 = await maslahatBering2(65);
+    console.log(javob2);
+    javob = await maslahatBering2(31);
+    console.log(javob2);
+    javob = await maslahatBering2(45);
+    console.log(javob2);
+}
+run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //============================Mitask 1=========================
 
 function countLetter(letter, word) {

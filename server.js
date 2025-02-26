@@ -6,14 +6,14 @@ const http = require("http");
 const fs = require("fs");
 
 
-let user;
-fs.readFile("database/user.json", "utf-8", (err, data) => {
-    if (err) {
-        console.log("Error", err);
-    } else { 
-        user = JSON.parse(data);
-    }
-});
+// let user;
+// fs.readFile("database/user.json", "utf-8", (err, data) => {
+//     if (err) {
+//         console.log("Error", err);
+//     } else { 
+//         user = JSON.parse(data);
+//     }
+// });
 
 
 // 1 - Expressdan kirib kelayotgan malumotlarga bogliq kodlar kirib keladi
@@ -35,21 +35,16 @@ app.post("/create-item", (req, res) => {
     //console.log(req.body);
     //console.log(req);
     //res.json({ test: "success" });
-
 });
 
-app.get('/author', (req, res) => {
-    res.render("author", { user: user });
-});
-
-
-
-
+// app.get('/author', (req, res) => {
+//     res.render("author", { user: user });
+// });
 
 
 
 app.get("/", function (req, res) {
-    res.render("harid");
+    res.render("reja");
 }); 
 
 
@@ -57,7 +52,7 @@ app.get("/", function (req, res) {
 const server = http.createServer(app);
 let PORT = 3000;
 server.listen(PORT, function () {
-    console.log(`The seever isrunning successfully on port ${PORT}`);
+    console.log(`The seever isrunning successfully on port ${PORT}, http://localhost:${PORT}`);
 });
 
 // npm start  start papka uchun ok
