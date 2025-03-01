@@ -3,7 +3,7 @@ const express = require("express");
 const res = require("express/lib/response");
 const app = express();
 
-const fs = require("fs");
+const db = require("./server").db();
 
 
 // let user;
@@ -20,11 +20,13 @@ const fs = require("fs");
 //Mongo DB connect(birinchi mongo ga ulangandan keyin serverni ishga tushirish)
 
 //MongoDB ni chaqirish
-const db = require("./server").db;
 
+//???????????????????????????????????????????????????????????????????
+// const db = require("./server").db;
 
+//const db = require("./server");
 
-
+//???????????????????????????????????????????????????????????????????
 
 
 
@@ -44,20 +46,46 @@ app.set("view engine", "ejs"); // EJS ni ishlatish uchun
 // 4 - rooter larga moljallangan
 
 app.post("/create-item", (req, res) => {
+    console.log("user entered/create-item");
     //console.log(req.body);
     //console.log(req);
     //res.json({ test: "success" });
+
+
+
+
+    console.log(req.body);
+    const new_reja= req.body.reja;
+    db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.end("smt is wrong: Error");
+        } else {
+            res.end("success");
+        }
+    });
 });
 
 // app.get('/author', (req, res) => {
 //     res.render("author", { user: user });
-// });
+// });   
 
 
 
 app.get("/", function (req, res) {
-    res.render("reja");
-}); 
+    console.log('user entered/');
+    db.collection("plans").find().toArray((err, data) => {
+        if (err) {
+            console.log(err);
+            res.end("smt is wrong: Error");
+        } else {
+            
+            res.render("reja", { items: data });
+        }
+
+    });
+});
+   
 
 
 
