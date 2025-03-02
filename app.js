@@ -54,15 +54,18 @@ app.post("/create-item", (req, res) => {
 
 
 
-    console.log(req.body);
+    //console.log(req.body);
     const new_reja= req.body.reja;
     db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.end("smt is wrong: Error");
-        } else {
-            res.end("success");
-        }
+        console.log(data.ops);
+        res.json(data.ops[0]);
+
+        // if (err) {
+        //     console.log(err);
+        //     res.end("smt is wrong: Error");
+        // } else {
+        //     res.end("success");
+        // }
     });
 });
 
