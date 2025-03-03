@@ -37,5 +37,53 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     // }).catch(function () {
     //     console.log("Please try again later");
     // });
+});
+
+
+document.addEventListener("click", function (e) {
+    // Update part
+    //if (e.target.classList.contains("edit-me")) {
+
+    console.log(e.target);
+    // delete operation
+    if(e.target.classList.contains("delete-me")) {
+        if (confirm("O'chirishni tasdiqlaysizmi?")) {
+            axios.post("/delete-item", { id: e.target.getAttribute("data-id")})
+            .then((response) => {
+                console.log(response.data);
+                e.target.parentElement.parentElement.remove();
+            })
+            .catch((err) => {
+                console.log("Iltimos qaytadan harakat qiling!");
+            });
+        }
+    }
+
+
+    //edit operation
+    if (e.target.classList.contains("edit-me")) {
+        alert("Siz edit tugmasini bosdingiz");
+    }
+
+    //     let userInput = prompt("Yangi matnni kiriting", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML);
+    //     if (userInput) {
+    //         axios.post("/update-item", { text: userInput, id: e.target.getAttribute("data-id") }).then(function () {
+    //             e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput;
+    //         }).catch(function () {
+    //             console.log("Please try again later");
+    //         });
+    //     }
+    // }
+    // // Delete part
+    // if (e.target.classList.contains("delete-me")) {
+    //     if (confirm("O'chirishni tasdiqlaysizmi?")) {
+    //         axios.post("/delete-item", { id: e.target.getAttribute("data-id") }).then(function () {
+    //             e.target.parentElement.parentElement.remove();
+    //         }).catch(function () {
+    //             console.log("Please try again later");
+    //         });
+    //     }
+    // }
+
 
 });
