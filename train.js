@@ -205,3 +205,42 @@ console.log(checkContent("mitgroup", "gmtiprou")); // true
 //==========================================================================================
 
 
+//====================================TASK D=================================================
+
+class Shop {
+    constructor(non, lagmon, cola) {
+      this.products = { non, lagmon, cola };
+    }
+  
+    vaqt() {
+      return new Date().toLocaleTimeString("kr-KR", { hour: "2-digit", minute: "2-digit" });
+    }
+  
+    qoldiq() {
+      console.log(`Hozir ${this.vaqt()}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`);
+    }
+  
+    sotish(nomi, miqdor) {
+      if (this.products[nomi] >= miqdor) {
+        this.products[nomi] -= miqdor;
+        console.log(`Hozir ${this.vaqt()}da ${miqdor}ta ${nomi} sotildi.`);
+      } else {
+        console.log(`Hozir ${this.vaqt()}da ${nomi} yetarli emas! Faqat ${this.products[nomi]}ta mavjud.`);
+      }
+    }
+  
+    qabul(nomi, miqdor) {
+      this.products[nomi] += miqdor;
+      console.log(`Hozir ${this.vaqt()}da ${miqdor}ta ${nomi} qabul qilindi.`);
+    }
+  }
+  
+  const shop = new Shop(4, 5, 2);
+  shop.qoldiq();
+  shop.sotish('non', 3);
+  shop.qabul('cola', 4);
+  shop.qoldiq();
+  
+
+//MEN TUSHUNDIM VA QAYTA KORIB CHIQDIM. LEKIN BU DARAJADA YOZOLMAGANIM SABAB CHATGPT DAN YORDA SORAB, QARAB, TUHSUNIB YECHISHGA HARAKAT QILDIM. 
+//==========================================================================================
