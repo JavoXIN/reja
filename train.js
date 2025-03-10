@@ -244,3 +244,25 @@ class Shop {
 
 //MEN TUSHUNDIM VA QAYTA KORIB CHIQDIM. LEKIN BU DARAJADA YOZOLMAGANIM SABAB CHATGPT DAN YORDA SORAB, QARAB, TUHSUNIB YECHISHGA HARAKAT QILDIM. 
 //==========================================================================================
+
+
+//==========================================================================================
+// E-TASK: 
+
+// Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
+// MASALAN: getReverse("hello") return qilsin "olleh"
+ 
+function hello(xola) {
+  if (typeof xola === 'string') {
+      let zzz = xola.split('').reverse().join('');
+      return zzz;
+  } else {
+      console.log(xola + " is not a string type");
+  }
+}
+
+// Example usage:
+console.log(hello("world")); // Output: "dlrow"
+hello(123); // Output: "123 is not a string type"
+
+//========================================================================================
